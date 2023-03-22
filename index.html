@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Cookie Jump</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bona+Nova&family=Fasthand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style >
+        html, body { 
+            width: 1920px;
+            height: 100%;
+            font-family: 'Bona Nova', serif;
+        }
+        header {
+            width: 1920px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background-color: #1f2635;
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            display: none;
+        }
+        i {
+            color: #ffff;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+        #logo2 {
+            height: 682.7px; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+        }
+        #hehe {
+            margin-top: 40px;
+        }
+        #hehe:hover {
+            color: #f5cc7a;
+            text-shadow: 0 0 10px #f2c261;
+        }
+        p, li {
+            font-size: 30px;
+            color: #ffff;
+            font-family: 'Bona Nova', serif;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 5px;
+        }
+        #infotitle{
+            color: #f3dc9a;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Fasthand', cursive;   
+            font-size: 50px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #tipstitle {
+            color: #f3dc9a;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Fasthand', cursive;   
+            font-size: 60px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #tips {
+            position: fixed;
+            display: none;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            background-color: rgba(2, 12, 23, 0.7); 
+            z-index: 2;
+            margin: 30px;
+            border-radius: 20px;
+            left: 70%;
+        }
+        #info {
+            position: fixed;
+            display: none;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            background-color: rgba(2, 12, 23, 0.7); 
+            z-index: 2;
+            margin: 30px;
+            border-radius: 20px;
+        }
+        a {
+            color: #ffff;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Bona Nova', serif;
+            text-decoration: none;   
+            font-size: 40px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        a:hover, a:active {
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px #f2c261;
+        }
+        #moon {
+            position: absolute;
+            width: 400px;
+            height: 370px;
+            top: 90px;
+            left: 39%;
+            z-index: 2;
+        }
+        #start {
+            position: fixed;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(2, 1, 21, 0.6);
+            z-index: 2;
+            cursor: pointer;
+        }
+        #lose {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(2, 1, 21, 0.6);
+            z-index: 2;
+            cursor: pointer;
+        }
+        #Ltext {
+            color: rgb(255, 255, 255);
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Fasthand', cursive;   
+            font-size: 60px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #win {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(2, 12, 23, 0.5); 
+            z-index: 2;
+            cursor: pointer;
+        }
+        #Wtext {
+            color: rgb(255, 255, 255);
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Fasthand', cursive;   
+            font-size: 60px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #refresh {
+            font-size: 35px;
+            color: rgb(255, 255, 255);
+            width: 250px;
+            border:  solid rgb(255, 255, 255);
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 20px;
+            margin-left: 20px;
+            font-family: 'Bona Nova', serif;
+            background: none;  
+
+        }
+        #refresh2 {
+            font-size: 35px;
+            color: rgb(255, 255, 255);
+            width: 250px;
+            border:  solid rgb(255, 255, 255);
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 20px;
+            margin-left: 20px;
+            font-family: 'Bona Nova', serif;
+            background: none;  
+        }
+        #refresh:hover, #refresh2:hover {
+            color: #f2d061;
+            border: solid rgb(242, 208, 97);
+        }
+        #aww {
+            height: 576px;
+            width: 1024px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 0;
+            border-radius: 50%;
+            border:  solid rgb(255, 255, 255);
+        }
+        #yay {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 576px;
+            width: 1024px;
+            margin-bottom: 0;
+            margin-top: 30px;
+            border-radius: 50%;
+            border:  solid rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body onload="window.location.hash = 'footer'">
+    <header id="header">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 90%;">
+                    <img onclick="infoShow();" id="logo" src="logo2.PNG" style="margin-left: 30px; margin-bottom: 10px; margin-top: 15px; height: 90px; width: 206.1px;" alt="cookie jump logo">
+                </td>
+                <td style="width: 5%;">
+                <i onclick="tipsShow();" class="glyphicon glyphicon-question-sign"></i>
+                </td>
+                <td style="width: 5%;">
+                <a title="About the Developers" href="devspage.html"><i class="glyphicon glyphicon-info-sign"></i></a>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <img id="moon" src="moonlight.png" alt="moonlight cookie">
+    <div id="lose">
+        <button id="refresh" type="button" onClick="window.location.reload();">Try Again?</button>
+        <img id="aww" src="loseimg.png" alt="sea fairy fail">
+        <p id="Ltext">You lost...</p>
+    </div>
+    <div id="win">
+        <button id="refresh2" type="button" onClick="window.location.reload();">Play Again?</button>
+        <img id="yay" src="golesbiansgo.png" alt="sea fairy and moonlight sitting on a crescent moon">
+        <p id="Wtext">You won!</p>
+    </div>
+    <div id="info">
+        <h1 id="infotitle">Cookie Jump: Tidal Waves</h1>
+        <p>Help Sea Fairy Cookie reach Moonlight Cookie by jumping through layers of the atmosphere!</p>
+        <img src="seafairyfrozen.webp" style="height:180px; width:180px; float:right; margin-right: 20px; margin-top: 10px;" alt="sea fairy frozen">
+        <br>
+        <p>Be careful not to fall!</p>
+    </div>
+    <div id="tips">
+        <h1 id="tipstitle">Tips</h1>
+        <ul>
+            <li>Time your jumps!</li>
+            <li>Holding the 'UP' arrow key can result in longer jumps!</li>
+            <li>Keep trying! Practice is key!</li>
+        </ul>
+        <img src="moon.webp" style="height:160px; width:160px; float: right; margin-top: 20px; margin-right: 20px;" alt="moonlight chillin">
+        <p id="hehe" onclick="haxx()">Still can't beat the game? Click this text!</p>
+    </div>
+    <div onclick="startDismiss()" id="start">
+        <img src="logo.PNG" id="logo2" alt="logo">
+        <p style="margin-left: auto; margin-right: auto; text-align: center; font-size: 40px">Click anywhere to start!</p>
+    </div>
+    <canvas id="canvas"></canvas>
+<footer id="footer">
+</footer>
+
+<script>
+
+    function startDismiss(){
+        document.getElementById("start").style.display = "none";
+        document.getElementById("header").style.display = "block";
+    }
+    // info 
+    function infoShow(){
+        document.getElementById("info").style.display = "block";
+    }
+    // tips 
+    function tipsShow(){
+        document.getElementById("tips").style.display = "block";
+    }
+
+    // sea fairy
+    var seafairy = {
+        x: 270,
+        y: 1400,
+        x_v: 0,
+        y_v: 0,
+        jump : true,
+        height: 200,
+        width: 200,
+        };
+    // arrow keys
+    var keys = {
+        right: false,
+        left: false,
+        up: false,
+        };
+    // gravity nd friction    
+    let gravity = 0.6;
+    function haxx(){
+        gravity = 0.1;
+    }
+    var friction = 0.7;
+    // num of platforms
+    var num = 6;
+    var num2 = 5;
+    var num3 = 3;
+    // platforms
+    var platforms = [];
+    var platforms2 = [];
+    var platforms3 = [];
+
+    var background = new Image();
+    background.src = "cookiejumpbg.PNG";
+
+    // render canvas
+    function rendercanvas(){
+        ctx.drawImage(background,0,0);  
+    }
+
+    var img1 = new Image();
+    img1.src = "mewewwe.png";
+
+    // render sea fairy
+    function renderseafairy(){
+        ctx.drawImage(img1, (seafairy.x)-100, (seafairy.y)-200, seafairy.width, seafairy.height) 
+        }
+    // create platforms
+    function createplat(){
+        for(i = 0; i < num; i++) {
+            platforms.push(
+                {
+                x: 150 + (290 * i),
+                y: 1500 - (70 * i),
+                width: 140,
+                height: 20
+                }
+            );
+        }
+    }
+    function createplat2(){
+        for(i2 = 0; i2 < num2; i2++) {
+            platforms2.push(
+                {
+                x: 150 + (290 * i2),
+                y: 780 + (70 * i2),
+                width: 140,
+                height: 20
+                }
+            );
+        }
+    }
+    function createplat3(){
+        for(i3 = 0; i3 < num3; i3++) {
+            platforms3.push(
+                {
+                x: 300 + (290 * i3),
+                y: 600 - (70 * i3),
+                width: 140,
+                height: 20
+                }
+            );
+        }
+    }
+    // render platforms
+    function renderplat(){
+        ctx.fillStyle = "#B5BACF";
+        ctx.fillRect(platforms[0].x, platforms[0].y, platforms[0].width, platforms[0].height);
+        ctx.fillRect(platforms[1].x, platforms[1].y, platforms[1].width,platforms[1]. height);
+        ctx.fillRect(platforms[2].x, platforms[2].y, platforms[2].width,platforms[2]. height);
+        ctx.fillRect(platforms[3].x, platforms[3].y, platforms[3].width,platforms[3]. height);
+        ctx.fillRect(platforms[4].x, platforms[4].y, platforms[4].width,platforms[4]. height);
+        ctx.fillRect(platforms[5].x, platforms[5].y, platforms[5].width,platforms[5]. height);
+    
+    }        
+    function renderplat2(){
+        ctx.fillStyle = "#506694";
+        ctx.fillRect(platforms2[0].x, platforms2[0].y, platforms2[0].width, platforms2[0].height);
+        ctx.fillRect(platforms2[1].x, platforms2[1].y, platforms2[1].width,platforms2[1]. height);
+        ctx.fillRect(platforms2[2].x, platforms2[2].y, platforms2[2].width,platforms2[2]. height);
+        ctx.fillRect(platforms2[3].x, platforms2[3].y, platforms2[3].width,platforms2[3]. height);
+        ctx.fillRect(platforms2[4].x, platforms2[4].y, platforms2[4].width,platforms2[4]. height);
+    
+    }    
+    function renderplat3(){
+        ctx.fillStyle = "#384E85";
+        ctx.fillRect(platforms3[0].x, platforms3[0].y, platforms3[0].width, platforms3[0].height);
+        ctx.fillRect(platforms3[1].x, platforms3[1].y, platforms3[1].width,platforms3[1]. height);
+        ctx.fillRect(platforms3[2].x, platforms3[2].y, platforms3[2].width,platforms3[2]. height);
+    }
+    function keydown(e) {
+        if(e.keyCode == 37) {
+            keys.left = true;
+        }
+        if(e.keyCode == 38) {
+            if(seafairy.jump == false) {
+                seafairy.y_v = -17;
+            }
+        }
+        if(e.keyCode == 39) {
+            keys.right = true;
+        }
+    }
+    function keyup(e) {
+        if(e.keyCode == 37) {
+            keys.left = false;
+        }
+        if(e.keyCode == 38) {
+            if(seafairy.y_v < -2) {
+            seafairy.y_v = -3;
+            }
+        }
+        if(e.keyCode == 39) {
+            keys.right = false;
+        }
+    } 
+    function loop() {
+        // jumping false, friction go weee
+        if(seafairy.jump == false) {
+            seafairy.x_v *= friction;
+        } else {
+            // in air, gravity go brrr
+            seafairy.y_v += gravity;
+        }
+        seafairy.jump = true;
+        // gotta go fast
+        if(keys.left) {
+            seafairy.x_v = -4.5;
+        }
+        if(keys.right) {
+            seafairy.x_v = 4.5;
+        }
+        // xy coords update
+        seafairy.y += seafairy.y_v;
+        seafairy.x += seafairy.x_v;
+        // platform collisions 1
+        let i = -1;
+        if(platforms[0].x < seafairy.x && seafairy.x < platforms[0].x + platforms[0].width &&
+        platforms[0].y < seafairy.y && seafairy.y < platforms[0].y + platforms[0].height){
+            i = 0;
+        }
+        if(platforms[1].x < seafairy.x && seafairy.x < platforms[1].x + platforms[1].width &&
+        platforms[1].y < seafairy.y && seafairy.y < platforms[1].y + platforms[1].height){
+            i = 1;
+        }
+        if(platforms[2].x < seafairy.x && seafairy.x < platforms[2].x + platforms[2].width &&
+        platforms[2].y < seafairy.y && seafairy.y < platforms[2].y + platforms[2].height){
+            i = 2;
+        }
+        if(platforms[3].x < seafairy.x && seafairy.x < platforms[3].x + platforms[3].width &&
+        platforms[3].y < seafairy.y && seafairy.y < platforms[3].y + platforms[3].height){
+            i = 3;
+        }
+        if(platforms[4].x < seafairy.x && seafairy.x < platforms[4].x + platforms[4].width &&
+        platforms[4].y < seafairy.y && seafairy.y < platforms[4].y + platforms[4].height){
+            i = 4;
+        }
+        if(platforms[5].x < seafairy.x && seafairy.x < platforms[5].x + platforms[5].width &&
+        platforms[5].y < seafairy.y && seafairy.y < platforms[5].y + platforms[5].height){
+            i = 5;
+        }
+        if (i > -1){
+            seafairy.jump = false;
+            seafairy.y = platforms[i].y;    
+        }            
+        // platforms collisions 2
+        let i2 = -1;
+        if(platforms2[0].x < seafairy.x && seafairy.x < platforms2[0].x + platforms2[0].width &&
+        platforms2[0].y < seafairy.y && seafairy.y < platforms2[0].y + platforms2[0].height){
+            i2 = 0;
+        }
+        if(platforms2[1].x < seafairy.x && seafairy.x < platforms2[1].x + platforms2[1].width &&
+        platforms2[1].y < seafairy.y && seafairy.y < platforms2[1].y + platforms2[1].height){
+            i2 = 1;
+        }
+        if(platforms2[2].x < seafairy.x && seafairy.x < platforms2[2].x + platforms2[2].width &&
+        platforms2[2].y < seafairy.y && seafairy.y < platforms2[2].y + platforms2[2].height){
+            i2 = 2;
+        }
+        if(platforms2[3].x < seafairy.x && seafairy.x < platforms2[3].x + platforms2[3].width &&
+        platforms2[3].y < seafairy.y && seafairy.y < platforms2[3].y + platforms2[3].height){
+            i2 = 3;
+        }
+        if(platforms2[4].x < seafairy.x && seafairy.x < platforms2[4].x + platforms2[4].width &&
+        platforms2[4].y < seafairy.y && seafairy.y < platforms2[4].y + platforms2[4].height){
+            i2 = 4;
+        }
+        if (i2 > -1){
+            seafairy.jump = false;
+            seafairy.y = platforms2[i2].y;    
+        }            
+        // platforms collisions 3
+        let i3 = -1;
+        if(platforms3[0].x < seafairy.x && seafairy.x < platforms3[0].x + platforms3[0].width &&
+        platforms3[0].y < seafairy.y && seafairy.y < platforms3[0].y + platforms3[0].height){
+            i3 = 0;
+        }
+        if(platforms3[1].x < seafairy.x && seafairy.x < platforms3[1].x + platforms3[1].width &&
+        platforms3[1].y < seafairy.y && seafairy.y < platforms3[1].y + platforms3[1].height){
+            i3 = 1;
+        }
+        if(platforms3[2].x < seafairy.x && seafairy.x < platforms3[2].x + platforms3[2].width &&
+        platforms3[2].y < seafairy.y && seafairy.y < platforms3[2].y + platforms3[2].height){
+            i3 = 2;
+        }
+        if (i3 > -1){
+            seafairy.jump = false;
+            seafairy.y = platforms3[i3].y;    
+        }
+        // render go weeee
+        rendercanvas();
+        renderseafairy();
+        renderplat();
+        renderplat2();
+        renderplat3();
+        // losing condition
+        if (seafairy.y > 1600){
+            document.getElementById("lose").style.display = "block"
+            document.getElementById("header").style.display = "none"
+        }
+        // winning condition
+        if (seafairy.y < 230){
+            document.getElementById("win").style.display = "block"
+            document.getElementById("header").style.display = "none"
+        }
+    }
+    canvas=document.getElementById("canvas");
+    ctx=canvas.getContext("2d");
+    ctx.canvas.height = 1600;
+    ctx.canvas.width = 1920;
+
+    // create platforms
+    createplat();
+    createplat2();
+    createplat3();
+
+    // event listeners
+    document.addEventListener("keydown",keydown);
+    document.addEventListener("keyup",keyup);
+    setInterval(loop,22);
+    document.addEventListener('mouseup', function(e) {
+        var container1 = document.getElementById('info');
+        if (!container1.contains(e.target)) {
+            container1.style.display = 'none';
+        }
+    });
+    document.addEventListener('mouseup', function(e) {
+        var container2 = document.getElementById('tips');
+        if (!container2.contains(e.target)) {
+            container2.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>
